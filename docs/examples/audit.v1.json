@@ -1,0 +1,252 @@
+{
+  "trip_id": "2026-10-10-example-2d",
+  "plan_version": 1,
+  "checked_at": "2026-09-21T21:27:57+08:00",
+  "script_version": "1.2.1",
+  "checks": [
+    {
+      "check_id": "schema",
+      "dimension": "契约类型",
+      "method": "script",
+      "result": "pass",
+      "detail": "trip.json 符合 assets/schemas/trip.schema.json"
+    },
+    {
+      "check_id": "ref-integrity",
+      "dimension": "ID 引用",
+      "method": "script",
+      "result": "pass",
+      "detail": "所有 place/fact/source/leg/alternative/item 引用均可解析"
+    },
+    {
+      "check_id": "dates-weekdays",
+      "dimension": "日期与身份",
+      "method": "script",
+      "result": "pass",
+      "detail": "星期换算：2026-10-10=周六, 2026-10-11=周日"
+    },
+    {
+      "check_id": "locked-items",
+      "dimension": "用户要求",
+      "method": "script",
+      "result": "pass",
+      "detail": "检查了 2 项已定安排"
+    },
+    {
+      "check_id": "must-go",
+      "dimension": "用户要求",
+      "method": "script",
+      "result": "pass",
+      "detail": "检查了 1 个必去项目"
+    },
+    {
+      "check_id": "budget-arith",
+      "dimension": "预算",
+      "method": "script",
+      "result": "pass",
+      "detail": "已付 640，预计未付 780–1210，总成本 1420–1850 CNY；未知类别 1 项"
+    },
+    {
+      "check_id": "fact-validity",
+      "dimension": "开放与入场",
+      "method": "script",
+      "result": "pass",
+      "detail": "检查了 8 条事实的适用期与冲突标记"
+    },
+    {
+      "check_id": "weather-kind",
+      "dimension": "风险与备选",
+      "method": "script",
+      "result": "pass",
+      "detail": "weather.kind=seasonal"
+    },
+    {
+      "check_id": "checklist",
+      "dimension": "风险与备选",
+      "method": "script",
+      "result": "pass",
+      "detail": "清单 4 项，其中 must/todo 2 项"
+    },
+    {
+      "check_id": "status-consistency",
+      "dimension": "输出一致性",
+      "method": "script",
+      "result": "pass",
+      "detail": "trip.status=conditional，建议 conditional"
+    },
+    {
+      "check_id": "secret-scan",
+      "dimension": "文件与安全",
+      "method": "script",
+      "result": "pass",
+      "detail": "未发现凭据、证件号或危险协议链接"
+    },
+    {
+      "check_id": "model-evidence-supports-claim",
+      "dimension": "开放与入场",
+      "method": "model",
+      "result": "skip",
+      "detail": "需模型按 references/audit.md §2 核查：每条 verified 事实的来源是否真的支持结论、是否适用目标日期"
+    },
+    {
+      "check_id": "model-route-sanity",
+      "dimension": "路线与衔接",
+      "method": "model",
+      "result": "skip",
+      "detail": "需模型按 references/audit.md §2 核查：路线有无明显无意义折返、首末日接驳是否合理"
+    },
+    {
+      "check_id": "model-description-useful",
+      "dimension": "输出一致性",
+      "method": "model",
+      "result": "skip",
+      "detail": "需模型按 references/audit.md §2 核查：每日活动是否解释了为什么安排、看什么、怎么游、为什么顺路"
+    },
+    {
+      "check_id": "model-social-overreach",
+      "dimension": "风险与备选",
+      "method": "model",
+      "result": "skip",
+      "detail": "需模型按 references/audit.md §2 核查：社媒结论是否过度推断（少量评论被写成统计结论）"
+    },
+    {
+      "check_id": "model-alternative-executable",
+      "dimension": "风险与备选",
+      "method": "model",
+      "result": "skip",
+      "detail": "需模型按 references/audit.md §2 核查：替代方案是否也检查了开放、位置、时间、费用"
+    },
+    {
+      "check_id": "outputs-check",
+      "dimension": "输出一致性",
+      "method": "script",
+      "result": "pass",
+      "detail": "当前数据指纹、路径、文件、可见内容覆盖与署名已核对"
+    }
+  ],
+  "issues": [
+    {
+      "issue_id": "issue-001",
+      "severity": "info",
+      "affected_ids": [
+        "item-d1-meal-1",
+        "place-oldstreet"
+      ],
+      "evidence": "地点 place-oldstreet 开放时间未知（空数组），item-d1-meal-1 按未知处理",
+      "fix_action": "查到后补 opening_windows",
+      "resolved": false
+    },
+    {
+      "issue_id": "issue-002",
+      "severity": "conditional",
+      "affected_ids": [
+        "item-d1-museum"
+      ],
+      "evidence": "示例博物馆 需要预约，当前状态 pending_user",
+      "fix_action": "写入清单：渠道、截止时间、失败替代；确认凭证后才可改 confirmed",
+      "resolved": false
+    },
+    {
+      "issue_id": "issue-003",
+      "severity": "info",
+      "affected_ids": [
+        "item-d1-checkin",
+        "place-hotel-area"
+      ],
+      "evidence": "地点 place-hotel-area 开放时间未知（空数组），item-d1-checkin 按未知处理",
+      "fix_action": "查到后补 opening_windows",
+      "resolved": false
+    },
+    {
+      "issue_id": "issue-004",
+      "severity": "info",
+      "affected_ids": [
+        "item-d1-oldstreet",
+        "place-oldstreet"
+      ],
+      "evidence": "地点 place-oldstreet 开放时间未知（空数组），item-d1-oldstreet 按未知处理",
+      "fix_action": "查到后补 opening_windows",
+      "resolved": false
+    },
+    {
+      "issue_id": "issue-005",
+      "severity": "info",
+      "affected_ids": [
+        "item-d1-dinner",
+        "place-oldstreet"
+      ],
+      "evidence": "地点 place-oldstreet 开放时间未知（空数组），item-d1-dinner 按未知处理",
+      "fix_action": "查到后补 opening_windows",
+      "resolved": false
+    },
+    {
+      "issue_id": "issue-006",
+      "severity": "info",
+      "affected_ids": [
+        "item-d2-checkout",
+        "place-hotel-area"
+      ],
+      "evidence": "地点 place-hotel-area 开放时间未知（空数组），item-d2-checkout 按未知处理",
+      "fix_action": "查到后补 opening_windows",
+      "resolved": false
+    },
+    {
+      "issue_id": "issue-007",
+      "severity": "info",
+      "affected_ids": [
+        "item-d2-lunch",
+        "place-oldstreet"
+      ],
+      "evidence": "地点 place-oldstreet 开放时间未知（空数组），item-d2-lunch 按未知处理",
+      "fix_action": "查到后补 opening_windows",
+      "resolved": false
+    },
+    {
+      "issue_id": "issue-008",
+      "severity": "info",
+      "affected_ids": [
+        "item-d2-lake",
+        "place-lake"
+      ],
+      "evidence": "地点 place-lake 开放时间未知（空数组），item-d2-lake 按未知处理",
+      "fix_action": "查到后补 opening_windows",
+      "resolved": false
+    },
+    {
+      "issue_id": "issue-009",
+      "severity": "info",
+      "affected_ids": [
+        "item-d2-buffer",
+        "place-station"
+      ],
+      "evidence": "地点 place-station 开放时间未知（空数组），item-d2-buffer 按未知处理",
+      "fix_action": "查到后补 opening_windows",
+      "resolved": false
+    },
+    {
+      "issue_id": "issue-010",
+      "severity": "conditional",
+      "affected_ids": [],
+      "evidence": "预算有未知类别：行李寄存/杂项（未知不是零）",
+      "fix_action": "交付里单独列出",
+      "resolved": false
+    },
+    {
+      "issue_id": "issue-011",
+      "severity": "conditional",
+      "affected_ids": [
+        "chk-museum-booking",
+        "chk-hotel"
+      ],
+      "evidence": "有 2 项必须完成的出发前事项未完成",
+      "fix_action": "方案最高为 conditional；在日程位置重复提醒",
+      "resolved": false
+    }
+  ],
+  "summary": {
+    "blocking": 0,
+    "conditional": 3,
+    "info": 8
+  },
+  "recommended_status": "conditional"
+}

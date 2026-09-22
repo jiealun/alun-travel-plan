@@ -1,0 +1,24 @@
+# Local credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Personal trips and local runtime files
+/travel-plan/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*-profile/
+browser-profile-*/
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

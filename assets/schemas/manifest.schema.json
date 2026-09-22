@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "alun-travel-plan/manifest.schema.json",
+  "title": "alun-travel-plan ArtifactManifest",
+  "type": "object",
+  "required": ["trip_id", "plan_version", "content_hash", "generated_at", "files", "coverage", "attribution", "renderer_version"],
+  "properties": {
+    "trip_id": {"type": "string"},
+    "plan_version": {"type": "integer"},
+    "content_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "generated_at": {"type": "string"},
+    "renderer_version": {"type": "string"},
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "kind", "sha256", "bytes"],
+        "properties": {
+          "path": {"type": "string"},
+          "kind": {"enum": ["md", "html", "card"]},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "bytes": {"type": "integer"}
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "required": ["md", "html"],
+      "additionalProperties": {
+        "type": "object",
+        "required": ["required", "present", "missing"],
+        "properties": {
+          "required": {"type": "integer"},
+          "present": {"type": "integer"},
+          "missing": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "required": ["text", "md", "html"],
+      "properties": {"text": {"type": "string"}, "md": {"type": "boolean"}, "html": {"type": "boolean"}}
+    }
+  }
+}

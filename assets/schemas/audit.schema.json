@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "alun-travel-plan/audit.schema.json",
+  "title": "alun-travel-plan AuditReport",
+  "type": "object",
+  "required": ["trip_id", "plan_version", "checked_at", "checks", "issues", "summary", "recommended_status", "script_version"],
+  "properties": {
+    "trip_id": {"type": "string"},
+    "plan_version": {"type": "integer"},
+    "checked_at": {"type": "string"},
+    "script_version": {"type": "string"},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check_id", "dimension", "method", "result", "detail"],
+        "properties": {
+          "check_id": {"type": "string"},
+          "dimension": {"type": "string"},
+          "method": {"enum": ["script", "model", "user"]},
+          "result": {"enum": ["pass", "fail", "warn", "skip"]},
+          "detail": {"type": "string"}
+        }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["issue_id", "severity", "affected_ids", "evidence", "fix_action", "resolved"],
+        "properties": {
+          "issue_id": {"type": "string"},
+          "severity": {"enum": ["blocking", "conditional", "info"]},
+          "affected_ids": {"type": "array", "items": {"type": "string"}},
+          "evidence": {"type": "string"},
+          "fix_action": {"type": "string"},
+          "resolved": {"type": "boolean"}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["blocking", "conditional", "info"],
+      "properties": {"blocking": {"type": "integer"}, "conditional": {"type": "integer"}, "info": {"type": "integer"}}
+    },
+    "recommended_status": {"enum": ["draft", "conditional", "executable_as_of_check"]}
+  }
+}

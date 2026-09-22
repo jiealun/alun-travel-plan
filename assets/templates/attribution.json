@@ -1,0 +1,7 @@
+{
+  "_comment": "只读配置。渲染脚本从这里读取署名文字并写入 MD 文末、HTML 页脚；长图另做可见文字检查。模型不得临时改写。",
+  "text": "由 Alun旅行规划生成",
+  "brand": "Alun",
+  "skill_name_zh": "Alun旅行规划",
+  "skill_name_en": "alun-travel-plan"
+}

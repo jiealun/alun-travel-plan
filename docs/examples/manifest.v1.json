@@ -1,0 +1,38 @@
+{
+  "trip_id": "2026-10-10-example-2d",
+  "plan_version": 1,
+  "content_hash": "3fdc3d9fd59fde40789accfe27ae9a4afbcc09ea6adccc8c3b180e449e99ffcc",
+  "generated_at": "2026-09-21T21:27:57+08:00",
+  "renderer_version": "2.2.1",
+  "files": [
+    {
+      "path": "outputs/2026-10-10-example-2d_v1.md",
+      "kind": "md",
+      "sha256": "8df05055ac5488ab6373da4d43bea99e1aeafe077fbeb7753784e249397bbfb6",
+      "bytes": 19612
+    },
+    {
+      "path": "outputs/2026-10-10-example-2d_v1.html",
+      "kind": "html",
+      "sha256": "f9b7a11c2d01dc4ea0220a04e02149e260f20df810f7485fb246bed0a50ad843",
+      "bytes": 111212
+    }
+  ],
+  "coverage": {
+    "md": {
+      "required": 203,
+      "present": 203,
+      "missing": []
+    },
+    "html": {
+      "required": 203,
+      "present": 203,
+      "missing": []
+    }
+  },
+  "attribution": {
+    "text": "由 Alun旅行规划生成",
+    "md": true,
+    "html": true
+  }
+}
