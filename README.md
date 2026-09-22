@@ -65,17 +65,14 @@ Alun旅行规划是一个对话式旅行规划 Skill。你可以只给出“周�
 
 ## 看看交付长什么样
 
-下面的截图来自仓库内的**虚构演示行程**，只演示页面结构和阅读方式，不代表真实景点开放、票价或预约状态。
+下面是同一版「上海→宁海 2 天 1 晚」行程的两种 **1:5 长图**。左侧为 A「清爽时间轴」，右侧为 B「手绘地图手账」。点击图片可查看完整尺寸；图中的车次、船班、开放及价格信息仅作版式示例，实际出行请重新核实。
 
 <p align="center">
-  <img src="docs/images/itinerary-desktop.png" alt="Alun旅行规划离线 HTML 手账桌面预览：旅程海报、条件提示和行程总览" width="900">
+  <a href="docs/images/ninghai-2d-style-a-1x5.png"><img src="docs/images/ninghai-2d-style-a-1x5.png" alt="上海到宁海两天一晚攻略长图，A 清爽时间轴风格" width="420"></a>
+  <a href="docs/images/ninghai-2d-style-b-1x5.png"><img src="docs/images/ninghai-2d-style-b-1x5.png" alt="上海到宁海两天一晚攻略长图，B 手绘地图手账风格" width="420"></a>
 </p>
 
-离线 HTML 把日期导航、每日时间线、交通住宿、预算、出发前清单、证据和版本信息放在同一页；正文预先写入文件，断网或关闭 JavaScript 也能阅读。手机视图同样保留关键提醒：
-
-<p align="center">
-  <img src="docs/images/itinerary-mobile.png" alt="Alun旅行规划离线 HTML 手账手机预览" width="300">
-</p>
+完整文字交付另有一套**虚构演示行程**，用于展示 Markdown 与离线 HTML 的结构，不对应上面的宁海长图：
 
 [打开 Markdown 示例](docs/examples/outputs/2026-10-10-example-2d_v1.md) · [打开离线 HTML 示例](docs/examples/outputs/2026-10-10-example-2d_v1.html) · [查看完整使用指南](docs/USAGE.md)
 
